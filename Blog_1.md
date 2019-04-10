@@ -27,3 +27,6 @@ Our plan is:
 2) Learn communal representations from our created Reddit dataset as context
 3) Use trained model to detect communities from held out set
 4) **Stretch Goal** Explore interpolating, or otherwise exploring the continuous space of communal representations to learn about the communities
+
+
+Github URL:https://github.com/mikejqzhang/nlp_capstone_sp19
