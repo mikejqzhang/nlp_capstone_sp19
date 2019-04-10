@@ -1,7 +1,7 @@
 # Blog Post 1
 
 ## Team Name
-Our team is ???
+Our team is Team Interpretability and Community Modeling
 
 ## List of Team Members
 1) Shobhit Hathi
@@ -19,3 +19,11 @@ Our first idea is centered around making self-attention models more interpretabl
 3) Explore a spectrum between hard constraints and soft constraints as a way of inducing more interepratability in self attention models
 4) **Stretch Goal** Explore visualizations of the semi-constrained self-attention model applied to different canonical NLP tasks as a way to understand linguistic phenomena about the task
 
+Our second idea falls under community modeling. A great amount of work has been done in making powerful representations for words. While a lot of language can be captured by plain word representation, langauge is inherently context dependent, and often times the identity of the linguistic community can be critical in understanding the language, and in other downstream tasks. Therefore, we propose a project based on learning communal representations that help in detecting community membership on unlabeled data. We do this using a context aware language modeling approach, as this type of generative modeling allows us to potentially interpolate between our communal representations and learn some new facts about the communities and the relations between them.
+
+Our plan is:
+
+1) Implement a context-aware language model
+2) Learn communal representations from our created Reddit dataset as context
+3) Use trained model to detect communities from held out set
+4) **Stretch Goal** Explore interpolating, or otherwise exploring the continuous space of communal representations to learn about the communities
