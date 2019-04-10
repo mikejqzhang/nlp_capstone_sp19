@@ -43,3 +43,5 @@ Our plan is to:
 3) Compare our generations to baselines such as LMs trained on each domain individually and perform experiments with genrations interpolated between domains.
 4) **Stretch Goal** Apply methods from Bowman et al. in Generating Sentences from a Continuous Space, only instead using domain representations as the latent variable
 as oposed to initial hidden state.
+
+Github URL:https://github.com/mikejqzhang/nlp_capstone_sp19
