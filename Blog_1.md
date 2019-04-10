@@ -27,3 +27,19 @@ Our plan is:
 2) Learn communal representations from our created Reddit dataset as context
 3) Use trained model to detect communities from held out set
 4) **Stretch Goal** Explore interpolating, or otherwise exploring the continuous space of communal representations to learn about the communities
+
+Our third idea aims at context-specific text generation. Here our goal is to
+learn a language model that we may condition on a given domain. We
+plan on using reddit data which is split into many subcommunities, and
+classification data such as the yelp review dataset for this task.
+We hope that by sharing parameters across domains and by learning domain
+embeddings that we condition our language model on, we can generate with greater
+fluency and get representations for each domain.
+
+Our plan is to:
+
+1) Implement a context-aware language model
+2) Learn domain representations for different classes/comunities in the Yelp review and Reddit datasets.
+3) Compare our generations to baselines such as LMs trained on each domain individually and perform experiments with genrations interpolated between domains.
+4) **Stretch Goal** Apply methods from Bowman et al. in Generating Sentences from a Continuous Space, only instead using domain representations as the latent variable
+as oposed to initial hidden state.
