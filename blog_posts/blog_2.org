@@ -1,18 +1,16 @@
-# Blog Post 2
+#+TITLE: Blog Post 2
 
-The Commune (our new team name) has narrowed our project proposal to one of two ideas.
-
-## Community Modeling
+* Community Modeling
 Our goals for this project are as follows:
-    1) Train a context-aware language model that learns embeddings for each community.
-    2) Explore methods of constraining community embeddings with the goal of
+    1. Train a context-aware language model that learns embeddings for each community.
+    2. Explore methods of constraining community embeddings with the goal of
        clustering communities with similar discourse. Additionally, we hope that
        this clustering will also help with the secondary objective of mapping
        new examples to the community that they're from.
 
 The resources we're concerned with for this project are:
-    1) Data
-    2) Compute
+    1. Data
+    2. Compute
 
 A pro of choosing this project is that one group member has already collected
 a reddit dataset that includes subreddit (community) and user metadata.
@@ -29,11 +27,10 @@ communities in their embedding space. Additionally, we think that it may improve
 standard techniques such as LDA becuase it maintains the language modeling objective without
 having to make unigram/n-gram assumptions or relying on bag-of-words encodings.
 
-## Constrained self-attention
+* Constrained self-attention
 Our goals for this project are as follows:
-    1) Implement syntactically-informed self attention
-    2) Experiment with applying sparsity constraints and
-       training with and without syntactic supervision
+    1. Implement syntactically-informed self attention
+    2. Experiment with applying sparsity constraints and training with and without syntactic supervision
 
 A pro of choosing this project is that we don't really need to worry about
 data or compute resources. We hope that our methods will be transferrrable across
@@ -47,4 +44,6 @@ is interpretable in the sense that we hope it is.
 We're excited about this project because of the possiblility of making
 models more interpretable via sparse attention weights.
 
-## 
+Along these lines, one possible lecture/discussion topic we think would be interesting
+are models that use syntax as a multitasking/pretraining objective (i.e. Syntactic Scaffolds, LISA).
+
