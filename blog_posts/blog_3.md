@@ -35,5 +35,5 @@ Our proposed model would be to adapt the context aware FactorCell language model
 ## Available Resources
 
 ## Evaluation Plan
-Accuracy
-Downstream Tasks
+* Accuracy
+* Downstream Tasks
