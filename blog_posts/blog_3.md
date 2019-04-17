@@ -16,6 +16,13 @@ our testing set will include instances belonging to communities not seen during 
 
 ## Related Work
 
+* Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT\*, Atlanta, Georgia (2019). 
+We're interested in exploring conformal methods as a way of getting credibility scores on community assignments. We hope that the
+same methods used for out of domain data detection will also be useful for identifying new, unseen communitites.
+
+* Aaron Jaech and Mari Ostendorf. Low-rank RNN adaptation for context-aware language modeling. Trans. Association of Computational Linguistics
+We're interested in methods because of how they've been shown to generate expressive domain embeddings which capture similarities between
+domains or contexts.
 
 ## Project Objectives
 
@@ -44,14 +51,23 @@ Our proposed model would be to adapt the context aware FactorCell language model
 * Code to run self attentive bi-directional LSTM with default hyperparameters
 * Standard compute resources that are available to the class
 
-
 ## Evaluation Plan
-Accuracy:
+Evaluating Clusters:
+We're hoping that our clusterings will reflect the true communities (subreddits) in our dataset. We're also interested in exploring ways
+of comparing subreddits that have been clustered together to user overlap between subreddits as a proxy for similarity.
 
-
+Evaluating New Community Detection:
+We're also interested in evaluating our model's calibration using methods from *Card et al.* and its ability to detect new communities in unseen text.
+We plan on testing the model's ability to detect when an unseen communities in held-out data.
 
 Downstream Task:
 This is still something we are looking into, but if the language model does well at clustering the data, then we can
 use the embeddings as extra features for a hate speech detection task. 
+
+### Literature Survey
+* Train baseline models
+* Adapt FactorCell model
+* Evaluate models
+* **Stretch Goal** Use learned embeddings from FactorCell model for downstream task
 
 
