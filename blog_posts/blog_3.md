@@ -20,9 +20,9 @@ our testing set will include instances belonging to communities not seen during 
 We're interested in exploring conformal methods as a way of getting credibility scores on community assignments. We hope that the
 same methods used for out of domain data detection will also be useful for identifying new, unseen communitites.
 
-* Aaron Jaech and Mari Ostendorf. Low-rank RNN adaptation for context-aware language modeling. Trans. Association of Computational Linguistics
-We're interested in methods because of how they've been shown to generate expressive domain embeddings which capture similarities between
-domains or contexts.
+* Aaron Jaech and Mari Ostendorf. Low-rank RNN adaptation for context-aware language modeling. Trans. Association of Computational Linguistics.
+Our proposed methodology is based off the FactorCell community aware language model introduced in this work. We wish to extend
+it to detecting new communities in an unlabeled text.
 
 ## Project Objectives
 
