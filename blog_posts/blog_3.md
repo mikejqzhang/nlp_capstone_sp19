@@ -64,10 +64,4 @@ Downstream Task:
 This is still something we are looking into, but if the language model does well at clustering the data, then we can
 use the embeddings as extra features for a hate speech detection task. 
 
-### Literature Survey
-* Train baseline models
-* Adapt FactorCell model
-* Evaluate models
-* **Stretch Goal** Use learned embeddings from FactorCell model for downstream task
-
 
