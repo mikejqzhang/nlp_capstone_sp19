@@ -29,11 +29,29 @@ and the ability to measure success at test time.
 For this project, we would like to explore both generative and discriminative approaches to our clustering. We would particularly like to investigate whether a generative, language modeling inspired approach can be competitive on our proposed task. 
 One baseline would be a standard bi-directional LSTM with multi headed self-attention, due to the relative ease with which it can be trained, as well as its strong performance on a variety of NL tasks.
 Another baseline would be to use an LDA approach to categorize our test set into different topics, where each topic would correspond to a community.
-Our proposed model would be to adapt the context aware FactorCell language model from Jaech and Ostendorf, 2017 to not only accept adaptation from context, but actually induce context from text. We are choosing this as our proposed methodology, because if it is performant, we would yield communally meaningful embeddings, which we hope would be strong at community dependent, downstream tasks. 
+Our proposed model would be to adapt the context aware FactorCell language model from *Jaech and Ostendorf, 2017* to not only accept adaptation from context, but actually induce context from text. We are choosing this as our proposed methodology, because if it is performant, we would yield communally meaningful embeddings, which we hope would be strong at community dependent downstream tasks, which we have not decided on yet.
+
+### Action Plan
+* Train baseline models
+* Adapt FactorCell model
+* Evaluate models
+* **Stretch Goal** Use learned embeddings from FactorCell model for downstream task
 
 
 ## Available Resources
+* Reddit data dump from 2012-2015
+* Fork of FactorCell repository with extra helper functions
+* Code to run self attentive bi-directional LSTM with default hyperparameters
+* Standard compute resources that are available to the class
+
 
 ## Evaluation Plan
-* Accuracy
-* Downstream Tasks
+Accuracy:
+
+
+
+Downstream Task:
+This is still something we are looking into, but if the language model does well at clustering the data, then we can
+use the embeddings as extra features for a hate speech detection task. 
+
+
