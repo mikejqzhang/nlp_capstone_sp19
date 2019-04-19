@@ -54,7 +54,9 @@ class BaselineModel(nn.Module):
         self.vocab_size = len(vocab)
         self.embedding_dim = args.embedding_dim
 
-        self.embedding_layer = nn.Embedding(self.vocab_size, self.embedding_dim, self.vocab.pad_idx)
+        self.embedding_layer = nn.Embedding(self.vocab_size,
+                                            self.embedding_dim,
+                                            self.vocab.pad_idx)
         if embeddings_matrix is not None:
             self.embedding_layer.weight = nn.Parameter(
                 embeddings_matrix,
@@ -76,7 +78,7 @@ class BaselineModel(nn.Module):
 
         self.attn_layer = nn.Linear(self.hidden_dim, 1)
         self.classification_layer = nn.Linear(self.hidden_dim, self.n_classes)
-        self.criterion = nn.NLLLoss(size_average=False)
+        self.criterion = nn.CrossEntropyLoss(size_average=False)
 
     def get_representation(self, x):
         batch_size, max_len = x.shape
