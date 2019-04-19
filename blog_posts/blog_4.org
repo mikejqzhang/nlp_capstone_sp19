@@ -26,15 +26,15 @@
    |------------+--------------------+----------|
 
 * Citations
-  [1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
-      Explainable prediction of medical codes from clinical text.
-      In Proceedings of the North American Chapter of the Association for Computational Linguistics (NAACL), June 2018.
-  [2] Dallas Card, Michael Zhang, and Noah A. Smith.
-      Deep Weighted Averaging Classifiers.
-      In Proceedings of FAT*, Atlanta, Georgia (2019).
-  [3] Xiang Zhang, Junbo Zhao, Yann LeCun.
-      Character-level Convolutional Networks for Text Classification.
-      Advances in Neural Information Processing Systems 28 (NIPS 2015). 
-  [4] Alon Jacovi, Oren Sar Shalom, Yoav Goldberg.
-      Understanding Convolutional Neural Networks for Text Classification.
-      Proceedings of the 2018 EMNLP Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP.
+  - [1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
+    Explainable prediction of medical codes from clinical text.
+    In Proceedings of the North American Chapter of the Association for Computational Linguistics (NAACL), June 2018.
+  - [2] Dallas Card, Michael Zhang, and Noah A. Smith.
+    Deep Weighted Averaging Classifiers.
+    In Proceedings of FAT*, Atlanta, Georgia (2019).
+  - [3] Xiang Zhang, Junbo Zhao, Yann LeCun.
+    Character-level Convolutional Networks for Text Classification.
+    Advances in Neural Information Processing Systems 28 (NIPS 2015). 
+  - [4] Alon Jacovi, Oren Sar Shalom, Yoav Goldberg.
+    Understanding Convolutional Neural Networks for Text Classification.
+    Proceedings of the 2018 EMNLP Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP.
