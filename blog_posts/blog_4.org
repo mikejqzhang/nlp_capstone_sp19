@@ -1,10 +1,10 @@
 #+TITLE: Blog Post 2
 
-* Baseline Approach:
-** Built dataloaders for Reddit data.
-** Implemented the Attention+CNN classification model from [1] (implementation adapted from [2])
-*** Subreddits as classes, comments as input
-** Downsampled (because running on the entire dataset takes too long for now...) baseline results:
+* Built dataloaders for Reddit data.
+* Implemented the Attention+CNN classification model [1]
+  - adapted implementation from [2]
+  - Subreddits as classes, single comments as input
+* Downsampled (because running on the entire dataset takes too long for now...) baseline results:
    |------------+--------------------+----------|
    | data split | Cross-Entropy loss | accuracy |
    |------------+--------------------+----------|
@@ -12,10 +12,10 @@
    | dev        |                    |          |
    | test       |                    |          |
    |------------+--------------------+----------|
-
-[1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
-    Explainable prediction of medical codes from clinical text.
-    In Proceedings of the North American Chapter of the Association for Computational Linguistics (NAACL), June 2018.
-[2] Dallas Card, Michael Zhang, and Noah A. Smith.
-    Deep Weighted Averaging Classifiers.
-    In Proceedings of FAT*, Atlanta, Georgia (2019).
+* Citations
+  [1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
+      Explainable prediction of medical codes from clinical text.
+      In Proceedings of the North American Chapter of the Association for Computational Linguistics (NAACL), June 2018.
+  [2] Dallas Card, Michael Zhang, and Noah A. Smith.
+      Deep Weighted Averaging Classifiers.
+      In Proceedings of FAT*, Atlanta, Georgia (2019).
