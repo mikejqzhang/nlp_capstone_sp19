@@ -1,9 +1,21 @@
 #+TITLE: Blog Post 4
 
 * Built dataloaders for Reddit data.
-* Implemented the Attention+CNN classification model [1]
-  - adapted implementation from [2]
-  - Subreddits as classes, single comments as input
+
+* Implemented a baseline model
+  We implemented a simple text classification baseline CNN+Attention model from [1] (adapted implementation from [2])
+  and are running experiments with Subreddits as classes, single comments as input.
+  We chose this method because of it's relatively simple and effective. Additionally CNNs have been shown to be very powerful,
+  especially for text classification tasks [3][4].
+    
+  We plan to later use the DWAC adaptation of this CNN+Attention model from [2]. One notable adaptation we plan to make to the
+  DWAC model later on is to compare instances against several learned "prototypes" per class instead of
+  the rest of the training set. During training time, we hope that doing this will reduce the noise
+  associated with predicting only with classes within each minibatch (part of the training algorithm in DWAC),
+  and will create denser clusters of examples. This has the additional benefit of reducing train/test time complexity from linear
+  w.r.t. the size of the training set to constant because we're comparing against a constant number of prototypes instead
+  of the entire train set.
+
 * Downsampled (because running on the entire dataset takes too long for now...) baseline results:
    |------------+--------------------+----------|
    | data split | Cross-Entropy loss | accuracy |
@@ -12,6 +24,7 @@
    | dev        |                    |          |
    | test       |                    |          |
    |------------+--------------------+----------|
+
 * Citations
   [1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
       Explainable prediction of medical codes from clinical text.
@@ -19,3 +32,9 @@
   [2] Dallas Card, Michael Zhang, and Noah A. Smith.
       Deep Weighted Averaging Classifiers.
       In Proceedings of FAT*, Atlanta, Georgia (2019).
+  [3] Xiang Zhang, Junbo Zhao, Yann LeCun.
+      Character-level Convolutional Networks for Text Classification.
+      Advances in Neural Information Processing Systems 28 (NIPS 2015). 
+  [4] Alon Jacovi, Oren Sar Shalom, Yoav Goldberg.
+      Understanding Convolutional Neural Networks for Text Classification.
+      Proceedings of the 2018 EMNLP Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP.
