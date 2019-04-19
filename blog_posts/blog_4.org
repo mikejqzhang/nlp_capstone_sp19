@@ -3,15 +3,15 @@
 * Baseline Approach:
 ** Built dataloaders for Reddit data.
 ** Implemented the Attention+CNN classification model from [1] (implementation adapted from [2])
-*** Subreddits as classes, comment as input
+*** Subreddits as classes, comments as input
 ** Downsampled (because running on the entire dataset takes too long for now...) baseline results:
-   |------------+------|
-   | data split | loss |
-   |------------+------|
-   | train      |      |
-   | dev        |      |
-   | test       |      |
-   |------------+------|
+   |------------+--------------------+----------|
+   | data split | Cross-Entropy loss | accuracy |
+   |------------+--------------------+----------|
+   | train      |                    |          |
+   | dev        |                    |          |
+   | test       |                    |          |
+   |------------+--------------------+----------|
 
 [1] J. Mullenbach, S. Wiegreffe, J. Duke, J. Sun, and J. Eisenstein.
     Explainable prediction of medical codes from clinical text.
