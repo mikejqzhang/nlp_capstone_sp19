@@ -24,7 +24,7 @@
    | test       |        4.14        |   3.36   |
    |------------+--------------------+----------|
 
-* Although our accuracy is distressingly low, on reflection, we think there are a number of low hanging fruit we can target
+Although our accuracy is distressingly low, on reflection, we think there are a number of low hanging fruit we can target
 to quickly get better results. For example, using a greater portion of our data, instead of merely 10000 instances might help.
 Also, there are probablty more sophisticated ways to build the vocabulary. Lastly, it is unclear if using LSTM models would improve the results, as it might be able to encode more of the context implictly in the model parameters.
 
