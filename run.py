@@ -6,8 +6,8 @@ import numpy as np
 
 import torch
 from torch.utils.data.sampler import SubsetRandomSampler
-
-from src.baseline_model import TextBaseline
+from src.dwac_model import AttentionCnnDwac
+# from src.baseline_model import TextBaseline
 from dataset import Reddit, load_vocab, collate_fn
 
 def to_numpy(var, device):
@@ -117,7 +117,7 @@ def main():
     #     model = AttentionCnnDwac(args, vocab, embeddings_matrix)
     # else:
     #     raise ValueError("Model type not recognized.")
-    model = TextBaseline(args, vocab, embeddings_matrix)
+    model = AttentionCnnDwac(args, vocab, embeddings_matrix)
 
     print("Update embeddings = ", args.update_embeddings)
 
@@ -268,68 +268,10 @@ def train(args, model, train_loader, dev_loader, test_loader, ref_loader, ood_lo
             print("Max epochs exceeded; exiting training\n")
             done = True
 
-    model_file = os.path.join(args.output_dir, 'model.best.tar')
-    print("Reloading best model")
-    model.load(model_file)
-
-    print("Embedding training data")
-    train_indices, train_z, train_labels, atts = embed(args, model, ref_loader)
-    print("Saving")
-    np.savez(os.path.join(args.output_dir, 'train.npz'),
-             labels=train_labels,
-             z=train_z,
-             indices=train_indices,
-             atts=atts)
-
-    print("Doing dev eval")
-    if args.model == 'dwac':
-        save_output(os.path.join(args.output_dir, 'dev.npz'),
-                    test_fast(args, model, dev_loader, ref_loader, name='Dev'))
-    else:
-        dev_labels, dev_indices, dev_pred_probs, dev_z, dev_confs, dev_atts = test(args, model,
-                                                                                   dev_loader,
-                                                                                   ref_loader,
-                                                                                   name='Dev')
-        print("Saving")
-        np.savez(os.path.join(args.output_dir, 'dev.npz'),
-                 labels=dev_labels,
-                 z=dev_z,
-                 pred_probs=dev_pred_probs,
-                 indices=dev_indices,
-                 confs=dev_confs)
-
-    print("Doing test eval")
-    if args.model == 'dwac':
-        save_output(os.path.join(args.output_dir, 'test.npz'),
-                    test_fast(args, model, test_loader, ref_loader, name='Test'))
-    else:
-        test_labels, test_indices, test_pred_probs, test_z, test_confs, test_atts = test(args, model, test_loader, ref_loader, name='Test')
-        print("Saving")
-        np.savez(os.path.join(args.output_dir, 'test.npz'),
-                 labels=test_labels,
-                 z=test_z,
-                 pred_probs=test_pred_probs,
-                 indices=test_indices,
-                 confs=test_confs,
-                 atts=test_atts)
-
-    if ood_loader is not None:
-        if args.model == 'dwac':
-            save_output(os.path.join(args.output_dir, 'ood.npz'),
-                        test_fast(args, model, ood_loader, ref_loader, name='OOD'))
-        else:
-            print("Doing OOD eval")
-            ood_labels, ood_indices, ood_pred_probs, ood_z, ood_confs, ood_atts = test(args, model, ood_loader, ref_loader, name='OOD')
-            print("Saving")
-            np.savez(os.path.join(args.output_dir, 'ood.npz'),
-                     labels=ood_labels,
-                     z=ood_z,
-                     pred_probs=ood_pred_probs,
-                     indices=ood_indices,
-                     confs=ood_confs)
 
 
-def test(args, model, test_loader, ref_loader, name='Test', return_acc=False):
+
+def test(args, model, test_loader, ref_loader, name='Test', return_acc=True):
     test_loss = 0
     correct = 0
     true_labels = []
@@ -349,14 +291,14 @@ def test(args, model, test_loader, ref_loader, name='Test', return_acc=False):
         pred = output['probs'].max(1, keepdim=True)[1]
         correct += pred.eq(target.view_as(pred)).sum().item()
         all_indices.extend(list(to_numpy(indices, args.device)))
-        if not return_acc:
-            true_labels.extend(list(to_numpy(target, args.device)))
-            pred_probs.append(to_numpy(output['probs'].exp(), args.device))
-            #all_indices.extend(list(to_numpy(indices, args.device)))
-            zs.append(to_numpy(output['z'], args.device))
-            atts.append(to_numpy(output['att'], args.device))
-            if args.model == 'dwac':
-                confs.append(to_numpy(output['confs'], args))
+        # if not return_acc:
+        #    true_labels.extend(list(to_numpy(target, args.device)))
+        #    pred_probs.append(to_numpy(output['probs'].exp(), args.device))
+        #    #all_indices.extend(list(to_numpy(indices, args.device)))
+        #    zs.append(to_numpy(output['z'], args.device))
+        #    atts.append(to_numpy(output['att'], args.device))
+        #    if args.model == 'dwac':
+        #        confs.append(to_numpy(output['confs'], args))
 
     test_loss /= len(test_loader.sampler)
     print('{:s} set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)'.format(
@@ -382,7 +324,7 @@ def test(args, model, test_loader, ref_loader, name='Test', return_acc=False):
         return true_labels, all_indices, np.vstack(pred_probs), np.vstack(zs), confs, att_matrix
 
 
-def test_fast(args, model, test_loader, ref_loader, name='Test', return_acc=False):
+def test_fast(args, model, test_loader, ref_loader, name='Test', return_acc=True):
     with torch.no_grad():
         output = model.evaluate(test_loader, ref_loader)
     test_loss = output['loss']
