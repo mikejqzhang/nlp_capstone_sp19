@@ -110,7 +110,7 @@ class AttentionCnnDwacModule(nn.Module):
         self.hidden_dim = args.hidden_dim
         self.z_dim = args.z_dim
         self.n_classes = args.n_classes
-        self.n_prototypes = 20
+        self.n_prototypes = 10
         
         self.prototypes = nn.Parameter(torch.randn(self.n_classes * self.n_prototypes, self.z_dim))
         self.prototypes_classes = torch.LongTensor(list(range(self.n_classes)) * self.n_prototypes)

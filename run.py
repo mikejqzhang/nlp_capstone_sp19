@@ -61,7 +61,7 @@ def main():
                         help='learning rate for training')
     parser.add_argument('--max-epochs', type=int, default=50, metavar='N',
                         help='number of training epochs')
-    parser.add_argument('--patience', type=int, default=5, metavar='N',
+    parser.add_argument('--patience', type=int, default=10, metavar='N',
                         help='number of training epochs')
 
     # DWAC Architecture Options
