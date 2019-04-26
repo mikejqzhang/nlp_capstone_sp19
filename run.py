@@ -8,7 +8,9 @@ import torch
 from torch.utils.data.sampler import SubsetRandomSampler
 from src.dwac_model import AttentionCnnDwac
 # from src.baseline_model import TextBaseline
-from dataset import Reddit, load_vocab, collate_fn
+from common import load_dataset
+from datasets.reddit_dataset import collate_fn
+
 
 def to_numpy(var, device):
     if device != 'cpu':
@@ -24,7 +26,7 @@ def main():
     parser.add_argument('--model', type=str, default='baseline', metavar='N',
                         help='Model to use [baseline|dwac]')
     parser.add_argument('--dataset', type=str, default='imdb', metavar='N',
-                        help='Dataset to run [imdb|amazon|stackoverflow|subjectivity]')
+                        help='Dataset to run [reddit|imdb|amazon|stackoverflow|subjectivity]')
     parser.add_argument('--subset', type=str, default=None, metavar='N',
                         help='Subset for amazon or framing dataset [beauty|...]')
 
@@ -126,9 +128,9 @@ def main():
 
 def load_data(args):
 
-    vocab, label_vocab = load_vocab('./data/vocab.pkl')
-    train_dataset = Reddit('./data/train.csv', vocab, label_vocab)
-    test_dataset = Reddit('./data/test.csv', vocab, label_vocab)
+    train_dataset, test_dataset = load_dataset(args.root_dir, args.dataset, args.subset, args.lower)
+    vocab = train_dataset.vocab
+    label_vocab = train_dataset.label_vocab
 
     print(len(train_dataset))
     print(len(test_dataset))
