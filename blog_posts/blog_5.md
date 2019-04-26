@@ -10,7 +10,9 @@
   The second baseline approach we experiment with use the Deep Weighted Averaging Classifiers adaptation of the CNN+Attention model from [2]. Standard deep, neural classifiers create low-dimensional representations of the input, then get a distribution over classes via a softmax. However, DWAC replaces the final softmax layer with a weighted sum over all other examples in the minibatch at training time and all training examples at test time. We changed the DWAC model to learn a constant number of “prototype” embeddings for each class. Therefore, at training/test time, the instances compare to these prototypes instead of all other examples. Previously, since the data are sparse but the instances in a minibatch are limited, forcing them to create denser clusters would result on a poor performance. However, this change allowed the data to cluster around the closest prototype in its class. Therefore, we expected it to increase the performance. We also experiment with different parameters on this model, such as the number of prototypes for each class.
   
 ## Experiment results:
+
 Simple CNN+Attention model:
+
    |------------+--------------------+----------|
    | data split | Cross-Entropy loss | accuracy |
    |------------+--------------------+----------|
@@ -18,7 +20,10 @@ Simple CNN+Attention model:
    | test       |        4.14        |   3.36   |
    |------------+--------------------+----------|
 
+
 DWAC CNN+Attention model with number of prototypes = 10:
+
+
    |------------+--------------------+----------|
    | data split | Cross-Entropy loss | accuracy |
    |------------+--------------------+----------|
@@ -26,7 +31,9 @@ DWAC CNN+Attention model with number of prototypes = 10:
    | test       |                |      |
    |------------+--------------------+----------|
    
+   
 DWAC CNN+Attention model with number of prototypes = 20:
+
 
    |------------+--------------------+----------|
    | data split | Cross-Entropy loss | accuracy |
