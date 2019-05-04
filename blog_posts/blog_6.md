@@ -17,12 +17,14 @@ Essentially, the baseline model makes decisions based on a nearest neighbors alg
 
 ### IMDb Dataset
 baseline
+
 |Dataset| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Train     | .18        |  94.6   |
 | Dev |   .29  |   90.2  |
 
 DWAC with # of prototype = 5
+
 |Dataset| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Train     | .15        |  93.9   |
@@ -30,18 +32,21 @@ DWAC with # of prototype = 5
 
 ### Stackoverflow Dataset
 baseline
+
 |Dataset| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Train     | .17        |  95.7   |
 | Dev |   .76  |   84.3  |
 
 DWAC with # of prototype = 5
+
 |Dataset| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Train     | .60        |  82.1   |
 | Dev |   .68  |   81.1  |
 
 DWAC with # of prototype = 10
+
 |Dataset| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Train     | .41        |  82.8   |
