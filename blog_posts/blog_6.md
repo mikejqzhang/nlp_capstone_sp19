@@ -52,5 +52,6 @@ DWAC with # of prototype = 10
 - [] By comparing the results on Stackoverflow Dataset with the results on IMDb Dataset, we found the DWAC model has larger impact on the Stackoverflow dataset, which is more similar to the structure of our Reddit dataset. There is no significant differences when the number of classes is small.
 - [] By comparing the results within the Stackoverflow Dataset, we find the smaller number of prototype we use, the better results we could get. Therefore, we infer that it might not be beneficial to try cluster data around too many prototype.
 - [] Overall, we found the DWAC model can probably avoid overfitting. 
+
 We are somewhat relieved by the results, as this reliably shows that our model itself doesn't have a serious issue. However,
 we acknowledge that strong performance in a binary classification task doesn't necessarily generalize to a multiclass problem, and in the next blog we would like to try extending to a greater number of classes, as well as find out if we can detect previously unseen classes (or at least detect that they were unseen during training) at test time.
