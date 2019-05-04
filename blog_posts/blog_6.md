@@ -11,5 +11,7 @@ meaningful results. As we run more diagnostics on the dataset we will present mo
 For the purpose of this dataset, we will report our results on the IMDb dataset (Maas et al., 2011), where the task is 
 classifying reviews as positive or negative. We report validation accuracy between our baseline and proposed solutions.
 
-
-
+|Model| Cross-Entropy Loss | Accuracy|
+|-----|--------------------|---------|
+|Baseline     | .28        |  89.2   |
+| DWAC + 5 Protoypes | 
