@@ -7,7 +7,7 @@ import numpy as np
 import torch
 from torch.utils.data.sampler import SubsetRandomSampler
 from src.dwac_model import AttentionCnnDwac
-# from src.baseline_model import TextBaseline
+from src.baseline_model import TextBaseline
 from common import load_dataset
 from datasets.reddit_dataset import collate_fn
 
@@ -110,16 +110,16 @@ def main():
     # embeddings_matrix = load_embeddings(args, vocab)
     embeddings_matrix = None
 
-    # # create the model
-    # if args.model == 'baseline':
-    #     print("Creating baseline model")
-    #     model = TextBaseline(args, vocab, embeddings_matrix)
-    # elif args.model == 'dwac':
-    #     print("Creating DWAC model")
-    #     model = AttentionCnnDwac(args, vocab, embeddings_matrix)
-    # else:
-    #     raise ValueError("Model type not recognized.")
-    model = AttentionCnnDwac(args, vocab, embeddings_matrix)
+    # create the model
+    if args.model == 'baseline':
+        print("Creating baseline model")
+        model = TextBaseline(args, vocab, embeddings_matrix)
+    elif args.model == 'dwac':
+        print("Creating DWAC model")
+        model = AttentionCnnDwac(args, vocab, embeddings_matrix)
+    else:
+        raise ValueError("Model type not recognized.")
+    # model = TextBaseline(args, vocab, embeddings_matrix)
 
     print("Update embeddings = ", args.update_embeddings)
 
@@ -230,21 +230,25 @@ def train(args, model, train_loader, dev_loader, test_loader, ref_loader, ood_lo
     epoch = 0
     epochs_without_improvement = 0
     best_epoch = 0
-
     print("Creating output directory {:s}".format(args.output_dir))
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
     while not done:
+        correct = 0
         for batch_idx, (data, target, indices) in enumerate(train_loader):
             data, target = data.to(args.device), target.to(args.device)
             output = model.fit(data, target)
+            pred = output['probs'].max(1, keepdim=True)[1]
+            correct += pred.eq(target.view_as(pred)).sum().item()
             loss = output['loss'].item()
             if batch_idx % args.log_interval == 0:
                 print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                     epoch, batch_idx * len(data), len(train_loader.sampler),
                            100. * batch_idx / len(train_loader), loss))
-
+        print('Train Epoch: {} [{}/{} ({:.0f}%)]\tAccuracy: {:.6f}'.format(
+                    epoch, batch_idx * len(data), len(train_loader.sampler),
+                           100. * batch_idx / len(train_loader), 100. * correct / len(train_loader.sampler)))
         if args.model == 'dwac':
             dev_output = test_fast(args, model, dev_loader, ref_loader, name='Dev', return_acc=True)
             dev_acc = dev_output['accuracy']
