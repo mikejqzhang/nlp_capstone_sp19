@@ -19,7 +19,7 @@ Essentially, the baseline model makes decisions based on a nearest neighbors alg
 |Model| Cross-Entropy Loss | Accuracy|
 |-----|--------------------|---------|
 |Baseline     | .28        |  89.2   |
-| DWAC + 5 Protoypes |     |   91.5  |
+| DWAC + 5 Protoypes |   .23  |   91.5  |
 
 ## Discussion
 
