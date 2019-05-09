@@ -14,17 +14,11 @@
 Simple CNN+Attention model:
 
    |------------+--------------------+----------|
-   
    | data split | Cross-Entropy loss | accuracy |
-   
    |------------+--------------------+----------|
-   
    | dev        |        4.15        |   4.52%  |
-   
    | test       |        4.14        |   3.36   |
-   
    |------------+--------------------+----------|
-
 
 DWAC CNN+Attention model with number of prototypes = 10:
 
