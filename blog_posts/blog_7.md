@@ -1,9 +1,9 @@
 # Blog Post 7
 As we mentioned in the previous blog, we decided to temporarily move away from the Reddit data and reframe our task into exploring the model we designed on top of the Deep Weighted Averaging Classifiers, the DWAC with prototypes. After we fully explore and hopefully develop approaches to improve the performance of DWAC with prototypes, we could train it on the Reddit dataset to do some downstream tasks.
 
-Our current goal is to compare DWAC and DWAC with prototypes in four directions: accuracy, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interoperability.
+Our current goal is to compare DWAC and DWAC with prototypes in four directions: accuracy, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interpretability.
 
-In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. The baseline we used is the a model with CNN+Attention plus linear softmax. We run baseline, DWAC and DWAC with prorotypes on IMDb dataset and Stackoverflow dataset with various numbers of prototypes.
+In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. The baseline we used is the a model with CNN+Attention plus linear softmax. We run baseline, DWAC and DWAC with prorotypes on IMDb dataset and Stackoverflow dataset with various numbers of prototypes. We visualize our results as one way to measure the interpretability of our model, as well as the error analysis for our model.
 
 ## Experiment results
 | Model                              |  IMDB Dev Accuracy | StackOverflow Dev Accuracy |
