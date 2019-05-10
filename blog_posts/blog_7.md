@@ -1,6 +1,11 @@
 # Blog Post 7
+As we mentioned in the previous blog, we decided to temporarily move away from the Reddit data and reframe our task into exploring the model we designed on top of the Deep Weighted Averaging Classifiers, the DWAC with prototypes. After we fully explore and hopefully develop approaches to improve the performance of DWAC with prototypes, we could train it on the Reddit dataset to do some downstream tasks.
 
-## More experiments
+Our current goal is to compare DWAC and DWAC with prototypes in five directions: accuracy, calibration, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interoperability.
+
+In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. We run both models on IMDb dataset and Stackoverflow dataset with various numbers of prototypes.
+
+## Experiment results
 | Model                              |  IMDB Dev Accuracy | StackOverflow Dev Accuracy |
 |------------------------------------|--------------------|----------------------------|
 | baseline                           |             0.9080 |                     0.8483 |
