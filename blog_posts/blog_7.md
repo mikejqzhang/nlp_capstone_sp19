@@ -24,22 +24,23 @@ To better understand our models' outputs, we visualized the output space by perf
 
 Here are the visualizations for the IMDb dataset (our apologies, we couldn't figure out how to embed them in time)
 
-! [Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_baseline_train.pdf?raw=true "Title")
+[Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_baseline_train.pdf?raw=true "Title")
 
-! [16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_16_train.pdf?raw=true "Title")
+[16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_16_train.pdf?raw=true "Title")
 
-! [1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_1024_train.pdf?raw=true "Title")
+[1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_1024_train.pdf?raw=true "Title")
 
-! [Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_max_train.pdf?raw=true "Title")
+[Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_max_train.pdf?raw=true "Title")
 
 Here are the visualizations for the StackOverflow dataset
-! [Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_baseline_train.pdf?raw=true "Title")
 
-! [16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_16_train.pdf?raw=true "Title")
+[Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_baseline_train.pdf?raw=true "Title")
 
-! [1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_1024_train.pdf?raw=true "Title")
+[16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_16_train.pdf?raw=true "Title")
 
-! [Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_max_train.pdf?raw=true "Title")
+[1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_1024_train.pdf?raw=true "Title")
+
+[Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_max_train.pdf?raw=true "Title")
 
 
 
