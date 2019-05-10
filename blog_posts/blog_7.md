@@ -1,9 +1,9 @@
 # Blog Post 7
 As we mentioned in the previous blog, we decided to temporarily move away from the Reddit data and reframe our task into exploring the model we designed on top of the Deep Weighted Averaging Classifiers, the DWAC with prototypes. After we fully explore and hopefully develop approaches to improve the performance of DWAC with prototypes, we could train it on the Reddit dataset to do some downstream tasks.
 
-Our current goal is to compare DWAC and DWAC with prototypes in five directions: accuracy, calibration, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interoperability.
+Our current goal is to compare DWAC and DWAC with prototypes in four directions: accuracy, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interoperability.
 
-In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. We run both models on IMDb dataset and Stackoverflow dataset with various numbers of prototypes.
+In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. The baseline we used is the a model with CNN+Attention plus linear softmax. We run baseline, DWAC and DWAC with prorotypes on IMDb dataset and Stackoverflow dataset with various numbers of prototypes.
 
 ## Experiment results
 | Model                              |  IMDB Dev Accuracy | StackOverflow Dev Accuracy |
@@ -21,6 +21,10 @@ In addition, in order to achieve a similar result as the original paper of DWAC,
 ## Error analysis
 
 ## Next action plan
+There are two major tasks we will work on as our next step.
+First, among the four directions to compare baseline, DWAC, and DWAC with prototypes (accuracy, credibility, interpretability, and speed), we have credibility left to compare and analyze on. Therefore, for the next week, we will calculate the credibility based on our current results.
+According to the paper, when using the probability as the basis of nonconformity, the farther a point is from the decision boundary, the higher will be its predicted probability, and therefore its credibility. We are going to use the same method to compute the credibility of DWAC with prototypes and compare the results with DWAC and baseline (softmax) model.
+Deep models tend to predict relatively high probabilities, even for out-of-domain data. Therefore, the credibility score from a conformal predictor provides a meaningful estimate of how much we should trust the corresponding prediction. Since one of our potential tasks is to detect previously unseen classes (or at least detect that they were unseen during training) at test time, measuring credability score would be useful since we want our model to have higher credability.
 
 ## Summary of the group feedback discussion
 
