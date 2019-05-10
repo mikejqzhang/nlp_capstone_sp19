@@ -13,48 +13,22 @@
 
 Simple CNN+Attention model:
 
-   |------------+--------------------+----------|
-   
-   | data split | Cross-Entropy loss | accuracy |
-   
-   |------------+--------------------+----------|
-   
-   | dev        |        4.15        |   4.52%  |
-   
-   | test       |        4.14        |   3.36   |
-   
-   |------------+--------------------+----------|
+|Dataset| Cross-Entropy Loss | Accuracy(%)|
+|-----|--------------------|---------|
+|Dev     | 4.15        | 4.52   |
+| Test |   4.14  |   3.36  |
 
 DWAC CNN+Attention model with number of prototypes = 10:
 
-
-   |------------+--------------------+----------|
-   
-   | data split | Cross-Entropy loss | accuracy |
-   
-   |------------+--------------------+----------|
-   
-   | dev        |        4.32        |   5.06%  |
-   
-   | test       |                |      |
-   
-   |------------+--------------------+----------|
-   
+|Dataset| Cross-Entropy Loss | Accuracy(%)|
+|-----|--------------------|---------|
+|Dev     | 4.32        | 5.06   |
    
 DWAC CNN+Attention model with number of prototypes = 20:
 
-
-   |------------+--------------------+----------|
-   
-   | data split | Cross-Entropy loss | accuracy |
-   
-   |------------+--------------------+----------|
-   
-   | dev        |        4.24        |   5.52%  |
-   
-   | test       |                |      |
-   
-   |------------+--------------------+----------|
+|Dataset| Cross-Entropy Loss | Accuracy(%)|
+|-----|--------------------|---------|
+|Dev     | 4.24        | 5.52   |
 
 ## Error Analysis
   There wasn't a big improvement on the performance as we expected. We made several guesses about the reasons. First, since we only used 10000 instances, the training was rather fast and we suspected that there were not enough data to classify the communities since we have 50 subreddits. What's more, the data might be noisy and most posts/comments are not representative enough. Therefore, in order to solve this problem, we will use a greater portion of our data in the future experiments and try to do more preprocessing steps on the data. Second, we didn't use any pretrained embeddings for these baseline models. Therefore, we will consider using pretrain embeddings like Glove, Elmo and BERT for our following experiments. The last thing we should consider is that if our models are absolutely correct. We will double check our code to make sure there isn't any bug in it.
