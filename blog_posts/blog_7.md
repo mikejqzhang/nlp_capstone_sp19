@@ -22,10 +22,15 @@ In addition, in order to achieve a similar result as the original paper of DWAC,
 
 ## Next action plan
 There are two major tasks we will work on as our next step.
+
 First, among the four directions to compare baseline, DWAC, and DWAC with prototypes (accuracy, credibility, interpretability, and speed), we have credibility left to compare and analyze on. Therefore, for the next week, we will calculate the credibility based on our current results.
+
 According to the paper, when using the probability as the basis of nonconformity, the farther a point is from the decision boundary, the higher will be its predicted probability, and therefore its credibility. We are going to use the same method to compute the credibility of DWAC with prototypes and compare the results with DWAC and baseline (softmax) model.
+
 Deep models tend to predict relatively high probabilities, even for out-of-domain data. Therefore, the credibility score from a conformal predictor provides a meaningful estimate of how much we should trust the corresponding prediction. Since one of our potential tasks is to detect previously unseen classes (or at least detect that they were unseen during training) at test time, measuring credability score would be useful since we want our model to have higher credability.
+
 Second, since our prototypes model initializes the prototypes randomly and updates them during the training process, it involves a lot of randomnesses. The performance various as the prototypes are updated to different values. Therefore, we want to seek a way to feed the prototypes to our model instead of randomly initializing them.
+
 One direction we want to explore is to pre-train on the data. Based on the result, we can select prototypes to be fed into our model, by, for example, taking the center if we cluster them together. We are also looking for suggestions and doing research to find possible ways to train or calculate those prototypes.
 
 ## Summary of the group feedback discussion
