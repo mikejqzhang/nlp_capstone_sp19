@@ -38,3 +38,6 @@ In addition, in order to achieve a similar result as the original paper of DWAC,
 * schedule group meetings twice a week
 * make consensus on several goals that we want to achieve each week
 * clearly distribute the work so we could work on our parts parallelly
+
+## Citations
+Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT*, Atlanta, Georgia (2019).
