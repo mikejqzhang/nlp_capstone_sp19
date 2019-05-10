@@ -3,7 +3,7 @@ As we mentioned in the previous blog, we decided to temporarily move away from t
 
 Our current goal is to compare DWAC and DWAC with prototypes in four directions: accuracy, credibility, interpretability, and speed. Using prototypes instead of comparing each pair of nodes speeds up the training process. Therefore, the experiments we have done this week mostly focused on accuracy and interpretability.
 
-In addition, in order to achieve a similar result as the original paper of DWAC, we used the Glove pretrained embeddings, as the same as they used in the paper, on both DWAC and DWAC with prototypes. The baseline we used is the a model with CNN+Attention plus linear softmax. We run baseline, DWAC and DWAC with prorotypes on IMDb dataset and Stackoverflow dataset with various numbers of prototypes. We visualize our results as one way to measure the interpretability of our model, as well as the error analysis for our model.
+In addition, in order to achieve a similar result as the original paper of DWAC, we used pretrained GloVe embeddings for both DWAC and DWAC with prototypes. The baseline we used is a CNN+Attention with a linear softmax model. We ran our baseline, DWAC and DWAC with prorotypes models on the IMDb and Stack Overflow and experimented with the number of prototypes used. We visualize our results as one way to measure the interpretability of our model, as well as the error analysis for our model.
 
 ## Experiment results
 | Model                              |  IMDB Dev Accuracy | StackOverflow Dev Accuracy |
@@ -22,25 +22,29 @@ In addition, in order to achieve a similar result as the original paper of DWAC,
 
 To better understand our models' outputs, we visualized the output space by performing PCA on the output representations for a few of our models. 
 
-Here are the visualizations for the IMDb dataset (our apologies, we couldn't figure out how to embed them in time)
+Here are the visualizations for the IMDb dataset (our apologies, we couldn't figure out how to embed them in time). The images are under the plots directory.
 
-[Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_baseline_train.pdf?raw=true "Title")
+![Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_baseline_train.pdf)
 
-[16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_16_train.pdf?raw=true "Title")
+![16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_16_train.pdf")
 
-[1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_1024_train.pdf?raw=true "Title")
+![1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_1024_train.pdf)
 
-[Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_max_train.pdf?raw=true "Title")
+![Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/imdb_max_train.pdf)
 
 Here are the visualizations for the StackOverflow dataset
 
-[Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_baseline_train.pdf?raw=true "Title")
+![Baseline Visualization](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_baseline_train.pdf)
 
-[16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_16_train.pdf?raw=true "Title")
+![16 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_16_train.pdf)
 
-[1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_1024_train.pdf?raw=true "Title")
+![1024 Prototypes](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_1024_train.pdf)
 
-[Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_max_train.pdf?raw=true "Title")
+![Original Model (max prototypes)](https://github.com/mikejqzhang/nlp_capstone_sp19/blob/master/plots/stack_overflow_max_train.pdf)
+
+We can identify a trend, that as the number of prototypes increases for the IMDb dataset, the PCA representations get closer and closer to a line, perhaps implying that we are able to capture more of the variance with a greater number of prototypes. We hypothesize this because if the PCA resembles a line, that means that there is a a single dimension that is the most relevant to capturing the variance of the data, so perhaps a greater number of prototypes encourages a single dimension to be the most important.
+
+Conversely, and surprisingly, it seems that as we increase the number of prototypes, the StackOverflow dataset seems to be less separable. This could be an artifact of PCA not being a non linear dimensionality reduction, but it is suspicious that the representations seem to all cluster when the number of prototypes is high. This is behavior we wish to investigate more rigorously in future blogs.
 
 
 
