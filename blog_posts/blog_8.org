@@ -45,6 +45,7 @@
   |    0.555 | Using LINQ to get column value from column name when you have the row ? | linq  |
   |----------+-------------------------------------------------------------------------+-------|
 
+
   |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
   |   Weight | Sentence                                                                                                                                                                                                                  | Label  |
   |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
@@ -56,3 +57,26 @@
   |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
 
 * Conformity Experiments
+  [[[[../plots/blog_8_baseline_conf.pdf]]]]
+
+* Next Steps
+  Going forward, we're hoping to run a couple of experiments listed below
+
+** Testing with Other Kernels
+   Both ProtoDWAC and DWAC only use the gaussian and inverse polynomial kernels for determining
+   weights from l2 distance in the embedded space. We're curious whether using something
+   with a sharper tail would have noticable effects on the learned embedding space or
+   robustness of the model. We intend on experimenting with something that assigns zero
+   weight to far away examples. Note that using something like this was unsucessful in the original
+   DWAC work. We hypothesize that this is because of the limitations of batch size in the DWAC
+   work since the requirement goes from having at least 2 examples of each class in a batch
+   to having at least 2 examples of each class within a given proximity. We're also interested in
+   allowing the model to learn variances or associated weights for each prototype corresponding
+   to its relative strength of neighborhood.
+
+** Using Training instances as Prototypes:
+   We're interested in whether we can use learned prototypes to later select training examples
+   to act as our prototypes, or if we can use some other method of selecting training
+   instances as prototypes directly before training starts. One possible avenue for exploration
+   is determinantal point processes from Kulesza and Taskar.
+
