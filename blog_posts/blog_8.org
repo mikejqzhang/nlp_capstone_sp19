@@ -57,10 +57,32 @@
   |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
 
 * Conformity Experiments
-  [[[[../plots/blog_8_baseline_conf.pdf]]]]
+  - Baseline Plot:
+    - [[../plots/blog_8_baseline_conf.pdf]]
+  - DWAC Plot:
+    - [[../plots/blog_8_dwac_conf.pdf]]
+  - ProtoDWAC Plot:
+    - [[../plots/blog_8_proto_conf.pdf]]
+  
+  Conformal methods gives us a way of guaranteeing (with high probability) error rates on our models predictions.
+  Under this framework, we allow our model predict a (possibly empty) set of labels instead of a single one.
+  This allows us to introduce a desired error rate, eplilon, and guarantee that the model's predicted label sets
+  will contain the true label 1-epsilon percent of the time.
+
+  What we observe is that when we move to our ProtoDWAC model, the number of empty sets predicted seems to grow
+  near identically to epsilon. In the case of DWAC we observe that the proportion of empty sets fars further below the
+  linear rise in epsilons, and the baseline falls further below that. Because the true label cannot be contained in the empty
+  set, and in the case of ProtoDWAC the model predicts the empty set approximately epsilon percent of the time, the non-empty
+  predictions very likely hold the true label (even more than in the case of DWAC and the baseline).
 
 * Next Steps
   Going forward, we're hoping to run a couple of experiments listed below
+
+** Testing with out-of-domain data:
+   Our confomity experiments suggest that our ProtoDWAC model's is good at assigning low credibility to erroneous predictions.
+   One way of seeing this in practice would be to test our model on out of domain data, and see whether it assigns lower credibility
+   to those predictions. Similarly we can do the same but by holding out one label from training, then asking the model to predict on
+   instances with the held out label.
 
 ** Testing with Other Kernels
    Both ProtoDWAC and DWAC only use the gaussian and inverse polynomial kernels for determining
@@ -80,3 +102,6 @@
    instances as prototypes directly before training starts. One possible avenue for exploration
    is determinantal point processes from Kulesza and Taskar.
 
+* Refrences:
+  - Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT*, Atlanta, Georgia (2019).
+  - Determinantal point processes for machine learning Alex Kulesza and Ben Taskar. Foundations and Trends in Machine Learning, December 2012.
