@@ -1,0 +1,58 @@
+#+TITLE: Blog Post 8
+
+* Accuracy and Calibration Experiments:
+  Here we report the results of runnning the baseline, DWAC, and ProtoDWAC on the IMDB
+  and StackOverflow datasets. Following the procedure in the Card et al., we report
+  Accuraccy (repeated experiments from Blog 7) and Calibration. We compare the results
+  from Card et al..
+
+  Similar to the findings in the previous blog post, we see that our proposed ProtoDWAC
+  model achieves comperable accuracy and calibration on both datasets.
+
+  |-----------+---------------+------------------------|
+  | Model     | IMDB Accuracy | StackOverflow Accuracy |
+  |-----------+---------------+------------------------|
+  | Baseline  |         0.905 |                  0.869 |
+  | DWAC      |         0.904 |                  0.866 |
+  | ProtoDWAC |         0.905 |                  0.867 |
+  |-----------+---------------+------------------------|
+
+  |-----------+------------------+---------------------------|
+  | Model     | IMDB Calibration | StackOverflow Calibration |
+  |-----------+------------------+---------------------------|
+  | Baseline  |            0.029 |                     0.009 |
+  | DWAC      |            0.024 |                     0.010 |
+  | ProtoDWAC |            0.029 |                     0.011 |
+  |-----------+------------------+---------------------------|
+
+* Interpretability Experiments
+  In the Original DWAC model, we were able to interpret the model by looking at the nearest
+  neighbors of each instance. Although are no longer using these distances directly
+  in fueling our predictions, we are roughly achiving a similar effect by using our
+  prototyped model. Here we show sone examples from the stackoverflow dataset of
+  instances and their weights (calculated by using the gaussian kernel on l2 distance,
+  same as how we determine the weight from each prototype). We include examples where
+  the nearest neighbors are close, and where they aren't. Originals are selected from the
+  test set, and nearest neighbors are found from the train set.
+
+  |----------+-------------------------------------------------------------------------+-------|
+  |   Weight | Sentence                                                                | Label |
+  |----------+-------------------------------------------------------------------------+-------|
+  | Original | LINQ inner join betwenn Enumerable and DB Table                         | linq  |
+  |----------+-------------------------------------------------------------------------+-------|
+  |    0.607 | How to do joins in LINQ on multiple fields in single join               | linq  |
+  |    0.581 | What is after LINQ ?                                                    | linq  |
+  |    0.555 | Using LINQ to get column value from column name when you have the row ? | linq  |
+  |----------+-------------------------------------------------------------------------+-------|
+
+  |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
+  |   Weight | Sentence                                                                                                                                                                                                                  | Label  |
+  |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
+  | Original | Advice on setting up a server to host source code and other documents ...                                                                                                                                                 | svn    |
+  |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
+  |    0.003 | SpringJunit4ClassRunner -- can I change the lifetime of the injected resources ?                                                                                                                                          | spring |
+  |    0.002 | I 've a function updating database table using Spring 's JdbcTemplate and for some reason there was exception that connection is read only u can not update any database related changes . How to resolve these problem ? | spring |
+  |    0.002 | Problem managing session with multiple data sources                                                                                                                                                                       | spring |
+  |----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------|
+
+* Conformity Experiments
