@@ -42,7 +42,7 @@
 
 
 * Visualization discussion
-  2 blog posts ago ([[../blog_7.md]]), we included plots of PCA done to the output space of our different models. One trend we
+  2 blog posts ago ([[blog_7.md]]), we included plots of PCA done to the output space of our different models. One trend we
   noticed is that the models with many prototypes tended to have clusters that were more separable in the PCA space, while the 
   original DWAC model did not. To gain a different view of the output space, we also performed t-SNE. We hypothesized that 
   t-SNE would be better at visualizing the output space as it can capture non linear relationships and clustering of the 
