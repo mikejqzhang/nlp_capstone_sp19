@@ -52,5 +52,18 @@
   non linear fashion.
 
   All t-SNE plots are in [[../plots/05_22/tSNE]]
+  
+* New Model
+We also implemented the prototype model that uses the prototypes selected by us instead of randomly initializing them. We considered using bag-of-words to embed the data and using the determinant point process to sample prototypes from each class. However, we started from an easier approach this week-- randomly sampling data from each class and using them as prototypes. Following are the results of our experiments:
+
+| Model                              | StackOverflow Dev Accuracy |
+|------------------------------------|----------------------------|
+| proto_dwac, 1 prototype/class     |                     0.4445 |
+| proto_dwac, 16 prototypes/class    |                     0.8650 |
+| proto_dwac, 64 prototypes/class    |                     0.8667 |
+| proto_dwac, 256 prototypes/class   |                     0.8680 |
+
+Comparing the results with the results of prototype model that randomly initializes the prototypes (reported in blog post 7), we found it has more stablely good performances among different number of prototypes. The previous model only achieve ~86% accuracy at several numbers of prototypes. However, the result of 1 prototype/class seems a little bit abnormal. We are going to explore this next week. 
+
 * References:
   - Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT*, Atlanta, Georgia (2019).
