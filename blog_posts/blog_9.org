@@ -44,10 +44,15 @@
 As a small experiment, we plotted the confusion matrices of our baseline model and DWAC model with 256 prototypes reported in the last blog post.
 The baseline model has a dev accuracy of 86% and the prototype model has a dev accuracy of 86%. Since their accuracy was similar, we want to explore if they have good and bad performance on the same or different classes.
 Confusion matrix of baseline model:
+
 [[../plots/baseline.png]]
+
 (row=reference, col=test)
+
 Confusion matrix of prototype model:
+
 [[../plots/prototype.png]]
+
 From the matrices, we found that these two models had pretty similar performances on each class. Generally, they made the most mistakes by confusing "osx" with "cocoa". We think it was just because "osx" and "cocoa" are too classes that are difficult to differentiate. The matrices reflected some features of the dataset but not the models, which are what we are more focused on.
 
 * Visualization discussion
