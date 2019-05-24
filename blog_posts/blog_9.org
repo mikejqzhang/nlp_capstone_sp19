@@ -1,0 +1,42 @@
+#+TITLE: Blog Post 9
+
+* Out of domain data experiments
+  Our goal is to evaluate our model's ability to assign low credibility scores
+  to predictions on out of domain data. In particular, we're interested in two
+  approaches for evaluating this.
+
+  One approach is holding out a specific label from training, then at test time
+  asking the model to predict on the held-out data. We belive that this
+  environment will simulate our original goal of community detection where the
+  goal was to identify emergent communties that our model was not exposed to during
+  training.
+
+  The other approach is simply providing data from a similar, but different source.
+  In the original DWAC paper, a baseline and DWAC model trained on the CIFAR
+  image dataset was evaluated based on its credibility scores assigned to examples
+  from the TinyImageNet dataset.
+
+  For this blog post, we attemted experiments using out-of-domain data from the first of
+  the two sources on the StackOverflow dataset. Here we would remove one of the 20 labels
+  from training, then evaluate its credibility scores on predictions on the held out label.
+  We do this for every label and a histogram of credibility scores assigned to predictions
+  on the held out label for both the baseline and protodwac models is located in the
+  directory: [[../plots/05_22]]
+
+  There's alot of plots to the first 3 categories (alphabetically):
+  - ajax:
+    - [[../plots/05_22/ajax_baseline_creds.pdf]]
+    - [[../plots/05_22/ajax_proto_creds.pdf]]
+  - apache:
+    - [[../plots/05_22/ajax_baseline_creds.pdf]]
+    - [[../plots/05_22/ajax_proto_creds.pdf]]
+  - bash:
+    - [[../plots/05_22/ajax_baseline_creds.pdf]]
+    - [[../plots/05_22/ajax_proto_creds.pdf]]
+  
+  Here, we see the consistant trend that the mean credibility scores of the baseline predictions
+  is just greater than that of the prototyped scores. We can interpret this as saying the
+  protoyped model is better at identifying new labels.
+
+* Refrences:
+  - Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT*, Atlanta, Georgia (2019).
