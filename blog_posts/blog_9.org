@@ -44,10 +44,10 @@
 As a small experiment, we plotted the confusion matrices of our baseline model and DWAC model with 256 prototypes reported in the last blog post.
 The baseline model has a dev accuracy of 86% and the prototype model has a dev accuracy of 86%. Since their accuracy was similar, we want to explore if they have good and bad performance on the same or different classes.
 Confusion matrix of baseline model:
-![baseline](../plots/baseline.png)
+[[../plots/baseline.png]]
 (row=reference, col=test)
 Confusion matrix of prototype model:
-![proto](../plots/prototype.png)
+[[../plots/prototype.png]]
 From the matrices, we found that these two models had pretty similar performances on each class. Generally, they made the most mistakes by confusing "osx" with "cocoa". We think it was just because "osx" and "cocoa" are too classes that are difficult to differentiate. The matrices reflected some features of the dataset but not the models, which are what we are more focused on.
 
 * Visualization discussion
@@ -73,6 +73,11 @@ We also implemented the prototype model that uses the prototypes selected by us 
 | proto_dwac, 256 prototypes/class   |                     0.8680 |
 
 Comparing the results with the results of prototype model that randomly initializes the prototypes (reported in blog post 7), we found it has more stablely good performances among different number of prototypes. The previous model only achieve ~86% accuracy at several numbers of prototypes. However, the result of 1 prototype/class seems a little bit abnormal. We are going to explore this next week. 
+
+* Next Step:
+- First we want to explore the abnormal behavior we described above of our new model when having only 1 prototype for each class. During this time, we will also review our code for the new model and see if there's any potential mistake.
+- Second, we still want to use bag-of-words to embed the data and the determinant point process to sample prototypes from each class. Therefore, we are going to try to implement this updated version of our new model and explore if it is going to have better performance than the current one.
+- Since our prototype models seem to do well on clustering the data within the same class, we want to explore if it is capable of finding subclasses of the main classes if we select prototypes from each subclass and feed them in our model. Since we already implement the model that allows us to select the prototypes, we can force two classes to have the same label and feed prototypes from each of them in our model. If they form two clusters with data originally from the same classes, then we know our model could be use to detect the subclasses.
 
 * References:
   - Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In Proceedings of FAT*, Atlanta, Georgia (2019).
